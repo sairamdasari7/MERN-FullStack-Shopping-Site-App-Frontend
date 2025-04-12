@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+```yaml
+# 🛍️ Category Management Dashboard (Full Stack MERN)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack e-commerce admin panel built with the MERN stack. It allows administrators to manage clothing categories by adding, viewing, and storing item counts and category images. The system includes user authentication using JWT, image uploads via multer, and a responsive React frontend.
 
-## Available Scripts
+This project is designed as a foundational full-stack application for e-commerce admin use cases, ideal for beginners and intermediate developers who want to learn how to integrate frontend, backend, and database layers with authentication and file handling.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📦 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React.js (Hooks + Functional Components)
+- **Backend**: Node.js + Express.js
+- **Database**: MongoDB (Mongoose)
+- **Authentication**: JSON Web Tokens (JWT)
+- **File Uploads**: Multer
+- **Styling**: CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📁 Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+category-dashboard/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── config/
+│   ├── uploads/
+│   ├── .env
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── *.js
+│   │   │   └── *.css
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── App.css
+├── README.md
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Backend Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cd backend
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔐 Create `.env` in `backend/`
 
-### `npm run eject`
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/categoryApp
+JWT_SECRET=your_jwt_secret_here
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### ▶️ Start Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+node server.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 Frontend Setup
 
-## Learn More
+cd frontend
+npm install
+npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔐 Auth Features
 
-### Code Splitting
+- Signup (/signup)
+- Login (/)
+- Token saved to localStorage
+- Protected dashboard route
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📦 Category Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- List all categories in a grid layout
+- Add new category (name, item count, image)
+- Images uploaded to backend/uploads/
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🧪 API Endpoints
 
-### Advanced Configuration
+| Method | Endpoint                 | Description            |
+|--------|--------------------------|------------------------|
+| POST   | /api/auth/signup         | Register user          |
+| POST   | /api/auth/login          | Login user             |
+| GET    | /api/categories          | Fetch all categories   |
+| POST   | /api/categories          | Add a new category     |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> All /categories endpoints require Authorization: Bearer <token>
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🖼️ Image Uploads
 
-### `npm run build` fails to minify
+- Images are stored locally in backend/uploads/
+- Accessed via http://localhost:5000/uploads/<filename>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🚀 Deployment Tips
+
+- Deploy frontend to Vercel
+  - Set root directory to frontend/
+- Deploy backend to Render
+  - Set root to backend/
+  - Add environment variables in Render dashboard
+
+---
+
+## 🧠 Notes
+
+- Use `npx create-react-app frontend --no-git` to avoid nested git issues
+- Delete `.git` inside frontend/ if accidentally created
+
+---
